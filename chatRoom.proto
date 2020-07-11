@@ -1,0 +1,33 @@
+//指定proto版本
+syntax = "proto3";
+
+package chatRoom;
+
+//指定產出GO GRPC程式的位置
+option go_package = "grpc/chatRoom";
+
+service ChatRoomService {
+    //登入, UserVo.Token有值時表示登入成功
+    rpc Login(LoginUserVo) returns (UserVo);
+    //傳入送出的聊天訊息, 回傳聊天紀錄, 需在context裡指定值, key = "token", value = UserVo.token
+    rpc Chat(stream MessageVo) returns (stream MessageVo);
+}
+
+//登入者
+message LoginUserVo {
+    string name = 1;
+}
+
+//使用者
+message UserVo {
+    string token = 1;
+    string name = 2;
+}
+
+
+//聊天視窗裡的訊息
+message MessageVo {
+    string content = 1;
+}
+
+//產go程式碼 protoc --go_out=plugins=grpc:. chatRoom.proto
