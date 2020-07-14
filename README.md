@@ -1,4 +1,7 @@
 # go + grpc chat room example
+執行該範例需要安裝go, 並使用go的指令取得grpc<br>
+安裝好go再確認環境變數沒問題後, 再安裝grpc, 在CMD下執行 go get -u google.golang.org/grpc
+
 該範例使用go + grpc來示範一個簡單的聊天室, 使用CMD(windows的命令提示字元)來執行該範例, 需啓動一支server端程式及N支client端<br>
 該範例使用的prot是8081
 
@@ -23,3 +26,4 @@ hh:mmAM System: Welcome name<br>
 client端想離開聊天室時輸入:exit後按下enter即可退出聊天室, 或是按下Ctrl + C
 
 server端想關閉時按下Ctrl + C
+
